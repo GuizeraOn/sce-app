@@ -12,9 +12,14 @@ export const Sidebar = () => {
 
     return (
         <aside className="hidden md:flex flex-col w-64 h-screen fixed left-0 top-0 bg-surface border-r border-border z-50">
-            <div className="p-8 flex items-center justify-center">
-                <h1 className="text-2xl font-black tracking-tighter text-white">
-                    CALISTENIA <span className="text-primary">ELITE</span>
+            <div className="p-8 flex flex-col items-center justify-center gap-4">
+                <img
+                    src="https://i.postimg.cc/xCSpT3NH/sce5.png"
+                    alt="Logo"
+                    className="w-16 h-16 object-contain drop-shadow-[0_0_10px_rgba(212,175,55,0.3)]"
+                />
+                <h1 className="text-2xl font-black tracking-tighter text-white text-center leading-none">
+                    CALISTENIA <span className="text-primary block">ELITE</span>
                 </h1>
             </div>
 

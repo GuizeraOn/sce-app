@@ -12,7 +12,12 @@ export const Header = () => {
     return (
         <>
             <header className="sticky top-0 z-40 w-full h-16 bg-background/80 backdrop-blur-md border-b border-border flex items-center justify-between px-4 md:px-8">
-                <div className="md:hidden">
+                <div className="md:hidden flex items-center gap-2">
+                    <img
+                        src="https://i.postimg.cc/xCSpT3NH/sce5.png"
+                        alt="Logo"
+                        className="w-8 h-8 object-contain"
+                    />
                     <h1 className="text-lg font-black tracking-tighter text-white">
                         CALISTENIA <span className="text-primary">ELITE</span>
                     </h1>

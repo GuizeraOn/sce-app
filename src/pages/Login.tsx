@@ -43,10 +43,12 @@ export const Login = () => {
                         transition={{ delay: 0.2, duration: 0.8 }}
                         className="inline-block mb-6"
                     >
-                        <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-primary to-yellow-600 p-[2px] mb-4 shadow-[0_0_30px_rgba(212,175,55,0.3)]">
-                            <div className="w-full h-full rounded-full bg-[#050505] flex items-center justify-center">
-                                <span className="font-black text-2xl text-primary">CE</span>
-                            </div>
+                        <div className="w-24 h-24 mx-auto mb-4 relative z-10">
+                            <img
+                                src="https://i.postimg.cc/xCSpT3NH/sce5.png"
+                                alt="Calistenia Elite Logo"
+                                className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(212,175,55,0.5)]"
+                            />
                         </div>
                     </motion.div>
 
