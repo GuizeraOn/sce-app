@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { CheckCircle, ChevronRight, FileText, Lock, Send } from 'lucide-react';
 import { COURSE_MODULES, type Lesson } from '../data/courseData';
 import { useCourseStore } from '../store/useCourseStore';
@@ -11,11 +11,15 @@ import { cn } from '../lib/utils';
 
 export const LessonDetail = () => {
     const { id } = useParams<{ id: string }>();
+    const [searchParams] = useSearchParams();
     const navigate = useNavigate();
-    const { markLessonComplete, isLessonCompleted } = useCourseStore();
+    const { markLessonComplete, isLessonCompleted, completeChallengeDay } = useCourseStore();
     const { addToast } = useToastStore();
     const [activeTab, setActiveTab] = useState<'resources' | 'comments'>('resources');
     const [comment, setComment] = useState('');
+
+    const fromChallenge = searchParams.get('from') === 'challenge';
+    const challengeDay = parseInt(searchParams.get('day') || '0');
 
     // Find lesson and next lesson
     let currentLesson: Lesson | undefined;
@@ -47,11 +51,21 @@ export const LessonDetail = () => {
     const isCompleted = isLessonCompleted(currentLesson.id);
 
     const handleComplete = () => {
-        if (currentLesson && !isCompleted) {
-            // Parse duration to minutes (mock logic, assuming "XX min" string)
-            const duration = parseInt(currentLesson.duration) || 10;
-            markLessonComplete(currentLesson.id, duration);
-            addToast("¡Clase completada! +10 XP", "success");
+        if (currentLesson) {
+            // Always mark lesson as complete for stats
+            if (!isCompleted) {
+                const duration = parseInt(currentLesson.duration) || 10;
+                markLessonComplete(currentLesson.id, duration);
+            }
+
+            // If from challenge, mark challenge day complete
+            if (fromChallenge && challengeDay > 0) {
+                completeChallengeDay(challengeDay);
+                addToast(`¡Día ${challengeDay} del Reto completado! +20 XP`, "success");
+                setTimeout(() => navigate('/reto'), 1500); // Return to challenge map
+            } else if (!isCompleted) {
+                addToast("¡Clase completada! +10 XP", "success");
+            }
         }
     };
 

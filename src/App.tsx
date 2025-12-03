@@ -7,6 +7,7 @@ import { Progress } from './pages/Progress';
 import { Profile } from './pages/Profile';
 import { EditProfile } from './pages/EditProfile';
 import { Settings } from './pages/Settings';
+import { Challenge } from './pages/Challenge';
 import { Login } from './pages/Login';
 import { useAuthStore } from './store/useAuthStore';
 import { ToastContainer } from './components/ui/ToastContainer';
@@ -39,6 +40,7 @@ function App() {
           <Route path="perfil" element={<Profile />} />
           <Route path="editar-perfil" element={<EditProfile />} />
           <Route path="configuracion" element={<Settings />} />
+          <Route path="reto" element={<Challenge />} />
         </Route>
 
         <Route path="*" element={<Navigate to="/" replace />} />

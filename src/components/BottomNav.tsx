@@ -1,10 +1,11 @@
 import { NavLink } from 'react-router-dom';
-import { Home, Dumbbell, Trophy, User } from 'lucide-react';
+import { Home, Dumbbell, Trophy, User, Swords } from 'lucide-react';
 import { cn } from '../lib/utils';
 
 export const BottomNav = () => {
     const navItems = [
         { icon: Home, label: "Inicio", path: "/" },
+        { icon: Swords, label: "Reto", path: "/reto" },
         { icon: Dumbbell, label: "Entrenar", path: "/entrenar" },
         { icon: Trophy, label: "Progreso", path: "/progreso" },
         { icon: User, label: "Perfil", path: "/perfil" },

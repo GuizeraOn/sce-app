@@ -115,17 +115,20 @@ export const Home = () => {
                     <p className="text-sm text-text-secondary mt-4">¡Mantén el fuego encendido!</p>
                 </Card>
 
-                <Card className="p-6 bg-gradient-to-br from-surface to-surface border-primary/20 relative overflow-hidden group cursor-pointer hover:border-primary/40 transition-colors">
+                <Card
+                    className="p-6 bg-gradient-to-br from-surface to-surface border-primary/20 relative overflow-hidden group cursor-pointer hover:border-primary/40 transition-colors"
+                    onClick={() => navigate('/reto')}
+                >
                     <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -mr-16 -mt-16" />
 
                     <div className="relative z-10">
                         <div className="flex items-center gap-2 mb-2">
-                            <span className="text-primary font-bold tracking-wider text-xs uppercase">Reto del Día</span>
+                            <span className="text-primary font-bold tracking-wider text-xs uppercase">Nuevo</span>
                         </div>
-                        <h3 className="text-xl font-bold text-white mb-1">50 Flexiones</h3>
-                        <p className="text-text-secondary text-sm mb-4">Complétalo para ganar una insignia exclusiva.</p>
+                        <h3 className="text-xl font-bold text-white mb-1">Reto 28 Días</h3>
+                        <p className="text-text-secondary text-sm mb-4">Tu camino guiado hacia la transformación total.</p>
                         <div className="flex items-center text-primary text-sm font-bold group-hover:gap-2 transition-all">
-                            Aceptar Reto <ArrowRight className="w-4 h-4 ml-1" />
+                            Comenzar Ahora <ArrowRight className="w-4 h-4 ml-1" />
                         </div>
                     </div>
                 </Card>

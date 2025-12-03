@@ -1,10 +1,11 @@
 import { NavLink } from 'react-router-dom';
-import { Home, Dumbbell, Trophy, User, LogOut } from 'lucide-react';
+import { Home, Dumbbell, Trophy, User, LogOut, Swords } from 'lucide-react';
 import { cn } from '../lib/utils';
 
 export const Sidebar = () => {
     const navItems = [
         { icon: Home, label: "Inicio", path: "/" },
+        { icon: Swords, label: "Reto 28 Días", path: "/reto" },
         { icon: Dumbbell, label: "Entrenar", path: "/entrenar" },
         { icon: Trophy, label: "Progreso", path: "/progreso" },
         { icon: User, label: "Perfil", path: "/perfil" },

@@ -6,10 +6,13 @@ interface CourseState {
     lastTrainedDate: string | null;
     streak: number;
     totalMinutes: number;
+    challengeCurrentDay: number;
+    challengeCompletedDays: number[];
 
     markLessonComplete: (lessonId: string, durationMinutes: number) => void;
     isLessonCompleted: (lessonId: string) => boolean;
     getProgress: () => number; // Percentage
+    completeChallengeDay: (day: number) => void;
 }
 
 export const useCourseStore = create<CourseState>()(
@@ -19,6 +22,8 @@ export const useCourseStore = create<CourseState>()(
             lastTrainedDate: null,
             streak: 0,
             totalMinutes: 0,
+            challengeCurrentDay: 1,
+            challengeCompletedDays: [],
 
             markLessonComplete: (lessonId, durationMinutes) => {
                 const state = get();
@@ -60,10 +65,17 @@ export const useCourseStore = create<CourseState>()(
             },
 
             getProgress: () => {
-                // This would ideally be calculated based on total lessons in the course
-                // For now, we can just return the count or a mock percentage if we don't import the full course data here to avoid circular deps
-                // Let's just return completed count for now, or we can inject total lessons count
                 return get().completedLessons.length;
+            },
+
+            completeChallengeDay: (day) => {
+                const state = get();
+                if (state.challengeCompletedDays.includes(day)) return;
+
+                set((state) => ({
+                    challengeCompletedDays: [...state.challengeCompletedDays, day],
+                    challengeCurrentDay: day < 28 ? day + 1 : 28
+                }));
             }
         }),
         {
